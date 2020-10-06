@@ -12,12 +12,14 @@ start_time = time.time()
 q = np.array([0.002, 0, -0.005, 0])
 length_seg1 = 550e-3  # length of long rods
 length_seg2 = 500e-3  # length of shorter rods
-length_rod = 0e-3  # length of the inner rod
+length_rod = 0e-3  # length of the inner shaft
 # force on robot tip along x, y, and z direction
 f = np.array([0, 0, 0]).reshape(3, 1)
 # distributed force on robot tip along x, y, and z direction
 w = np.array([0, 0, 0]).reshape(3, 1)
+# mimimum step size for the solver
 tol = 0.01
+
 MBM = MBM_Model(length_seg1, length_seg2, length_rod, w, f, q, tol)
 MBM.minimize(np.array([0, 0, 0, 0]))
 
